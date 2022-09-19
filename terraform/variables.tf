@@ -78,3 +78,13 @@ variable "image_repo_name" {
     description = "Image repo name"
     type = string
 }
+
+variable "cw_log_group" {
+  description = "CloudWatch Log Group"
+  default     = "payaut"
+}
+
+variable "cw_log_stream" {
+  description = "CloudWatch Log Stream"
+  default     = "payaut-fargate"
+}

@@ -111,13 +111,19 @@ resource "aws_codebuild_project" "codebuild" {
     buildspec = <<BUILDSPEC
 version: 0.2
 runtime-versions:
-  java: openjdk8
+  python: 3.8
 phases:
   install:
     runtime-versions:
       docker: 18
   pre_build:
     commands:
+      - apt-get install -y python3-venv
+      - python3.6 -m venv test_venv
+      - . test_venv/bin/activate
+      - pip install --upgrade pip
+      - pip install .
+      - pip install -r tests/requirements.txt
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
@@ -125,9 +131,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the jar
       - mvn package
-      - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
