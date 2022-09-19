@@ -1,0 +1,8 @@
+aws_region="us-east-1"
+stack="terraform-payaut"
+fargate-task-service-role="terraform-payaut-role"
+aws_ecr="payaut"
+aws_profile="default"
+source_repo_name="payaut"
+source_repo_branch="master"
+image_repo_name="payaut"
