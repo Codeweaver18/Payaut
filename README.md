@@ -17,16 +17,11 @@ steps to replicate
 Primary Achitecture (whats implemented)
 *****************************************
 
+![Architecture-diagram](https://user-images.githubusercontent.com/6957817/191026654-08ea0d1e-6c57-466d-b7a3-70bd8b6335e1.jpg)
+
 
 
 Note: in this Achitecture, RDS was not included.
-
-
-
-
-Future plans/proposition
-*****************************************
-
 
 
 Other Things to consider
