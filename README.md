@@ -1,6 +1,5 @@
 # Payaut Assessment
 
-
 steps to replicate
 ********************
 1. install terraform
@@ -13,6 +12,21 @@ steps to replicate
 8. get aws commit  credentials
 9. commit code to repository and watch the deployment
 10. test application after deployment
+
+
+Primary Achitecture (whats implemented)
+*****************************************
+
+
+
+Note: in this Achitecture, RDS was not included.
+
+
+
+
+Future plans/proposition
+*****************************************
+
 
 
 Other Things to consider
