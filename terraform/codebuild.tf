@@ -118,12 +118,6 @@ phases:
       docker: 18
   pre_build:
     commands:
-      - apt-get install -y python3-venv
-      - python3.6 -m venv test_venv
-      - . test_venv/bin/activate
-      - pip install --upgrade pip
-      - pip install .
-      - pip install -r tests/requirements.txt
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
@@ -131,7 +125,6 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn package
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:

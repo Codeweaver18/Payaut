@@ -24,7 +24,7 @@ books = [
 
 @app.route('/', methods=['GET'])
 def home():
-    return 'Distant Reading Archive: A prototype API for distant reading of science fiction novels.''
+    return 'Distant Reading Archive: A prototype API for distant reading of science fiction novels.'
 
 @app.route('/api/v1/item/all', methods=['GET'])
 def api_all():
@@ -53,4 +53,4 @@ def api_id():
     # Python dictionaries to the JSON format.
     return jsonify(results)
 
-app.run()
+app.run(debug=True, host='0.0.0.0', port=5000)
